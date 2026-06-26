@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scanner de Portas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+
+    <div class="container">
+
+<h1>Scanner de Portas</h1>
+
+<p>Exemplos de IP's:</p>
+
+<ul class="portas">
+    <li>google.com</li>
+    <li>8.8.8.8</li>
+</ul>
+        <form method="POST">
+            <input type="text" name="ip" placeholder="Digite um IP">
+<!-- From Uiverse.io by StealthWorm --> 
+<!-- From Uiverse.io by StealthWorm --> 
+<button type="submit" class="btn">
+  <strong>SCANNEAR</strong>
+  <div id="container-stars">
+    <div id="stars"></div>
+  </div>
+
+  <div id="glow">
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</button>
+
+<P>(Apos clicar no botão aguarde 10 segundos para obter o resultado)</P>
+
+
+        </form>
+
+        {% if result is not none %}
+            <h2>IP: {{ ip }}</h2>
+
+            <h2>Portas abertas:</h2>
+
+            {% if result %}
+                <ul>
+                {% for port in result %}
+                    <li>{{ port }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p>Nenhuma porta aberta encontrada.</p>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
